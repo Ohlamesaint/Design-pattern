@@ -1,4 +1,4 @@
-package template_method;
+package part2.chapter3_template_method;
 
 public class StringDisplay implements AbstractDisplay{
     private String str;

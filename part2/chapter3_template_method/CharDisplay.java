@@ -1,4 +1,4 @@
-package template_method;
+package part2.chapter3_template_method;
 
 public class CharDisplay implements AbstractDisplay{
 

@@ -1,4 +1,4 @@
-package part1.iterator;
+package part1.chapter1_iterator;
 
 public class BookShelfIterator implements Iterator{
 
