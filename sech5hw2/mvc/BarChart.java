@@ -1,10 +1,10 @@
-package sech5hw2;
+package sech5hw2.mvc;
 
 import jdk.jfr.Event;
 
-public class PieChart extends View{
+public class BarChart extends View{
 
-    PieChart(Controller controller) {
+    BarChart(Controller controller) {
         super(controller);
     }
 
@@ -13,7 +13,7 @@ public class PieChart extends View{
         model.getData1();
         model.getData2();
         model.getData3();
-        // PieChart View
+        // BarChart View
     }
 
     @Override

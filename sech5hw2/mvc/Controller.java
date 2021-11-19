@@ -1,4 +1,4 @@
-package sech5hw2;
+package sech5hw2.mvc;
 
 import java.util.ArrayList;
 import java.util.List;
