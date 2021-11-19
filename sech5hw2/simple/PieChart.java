@@ -12,13 +12,13 @@ public class PieChart implements Display {
     }
 
     @Override
-    public void update() {
+    public void update(Model model) {
         DecimalFormat format = new DecimalFormat(".#");
         AtomicInteger tempValueTotal = new AtomicInteger();
-        this.control.dataMap.forEach((key, value) -> {
+        model.getData().forEach((key, value) -> {
             tempValueTotal.addAndGet(value);
         });
-        this.control.dataMap.forEach((key, value) -> {
+        model.getData().forEach((key, value) -> {
             System.out.println(key + " " + (format.format((float)value/(float)(tempValueTotal.intValue())*100)) + "%");
         });
     }

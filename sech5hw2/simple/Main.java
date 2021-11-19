@@ -7,7 +7,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
         Scanner scanner = new Scanner(new FileInputStream(args[0]));
-        Controller control = new Controller();
+        Model model = new Model();
+        Controller control = new Controller(model);
 
         while(scanner.hasNextLine()){
             control.dispatch(scanner.nextLine());

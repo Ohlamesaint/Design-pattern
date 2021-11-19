@@ -4,15 +4,20 @@ import java.util.*;
 
 public class Controller {
 
-    // == Fields ==
-    Map<String, Integer> dataMap = new LinkedHashMap<>();
-    List<Display> displays = new ArrayList<>();
+    // == fields ==
+    Model model;
+    private List<Display> displays = new ArrayList<>();
+
+    // == constructors ==
+    Controller(Model model) {
+        this.model = model;
+    }
 
     // == public method ==
     public void dispatch(String input){
         String[] inputSplit = input.split(" ");
         if(inputSplit[0].equals("data")){
-            this.addData(inputSplit[1], Integer.parseInt(inputSplit[2]));
+            model.addData(inputSplit[1], Integer.parseInt(inputSplit[2]));
         }
         else if(inputSplit[0].equals("addChart")){
             this.attach(inputSplit[1]);
@@ -23,9 +28,6 @@ public class Controller {
     }
 
     // == private helper ==
-    private void addData(String dataName, int dataAmount){
-        this.dataMap.put(dataName, dataAmount);
-    }
 
     private void attach(String input){
         if(input.equals("Spreadsheet")){
@@ -39,10 +41,10 @@ public class Controller {
 
     private void notifyDisplay(String input){
         String[] inputSplit = input.split(" ");
-        this.dataMap.put(inputSplit[2], Integer.parseInt(inputSplit[3]));
+        model.addData(inputSplit[2], Integer.parseInt(inputSplit[3]));
         System.out.println(input + ".");
         this.displays.forEach((display) -> {
-            display.update();
+            display.update(model);
         });
     }
 }
