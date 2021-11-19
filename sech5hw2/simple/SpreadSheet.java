@@ -2,15 +2,15 @@ package sech5hw2.simple;
 
 public class SpreadSheet implements Display {
 
-    Data mainControl;
+    Controller control;
 
-    SpreadSheet(Data mainControl){
-        this.mainControl = mainControl;
+    SpreadSheet(Controller control){
+        this.control = control;
     }
 
     @Override
     public void update() {
-        this.mainControl.dataMap.forEach((key, value) -> {
+        this.control.dataMap.forEach((key, value) -> {
             System.out.println(key + " " + value);
         });
     }

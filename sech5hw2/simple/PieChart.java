@@ -5,20 +5,20 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class PieChart implements Display {
 
-    Data mainControl;
+    Controller control;
 
-    PieChart(Data mainControl){
-        this.mainControl = mainControl;
+    PieChart(Controller control){
+        this.control = control;
     }
 
     @Override
     public void update() {
         DecimalFormat format = new DecimalFormat(".#");
         AtomicInteger tempValueTotal = new AtomicInteger();
-        this.mainControl.dataMap.forEach((key, value) -> {
+        this.control.dataMap.forEach((key, value) -> {
             tempValueTotal.addAndGet(value);
         });
-        this.mainControl.dataMap.forEach((key, value) -> {
+        this.control.dataMap.forEach((key, value) -> {
             System.out.println(key + " " + (format.format((float)value/(float)(tempValueTotal.intValue())*100)) + "%");
         });
     }

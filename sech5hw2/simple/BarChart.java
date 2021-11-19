@@ -2,15 +2,15 @@ package sech5hw2.simple;
 
 public class BarChart implements Display {
 
-    Data mainControl;
+    Controller control;
 
-    BarChart(Data mainControl){
-        this.mainControl = mainControl;
+    BarChart(Controller control){
+        this.control = control;
     }
 
     @Override
     public void update() {
-        this.mainControl.dataMap.forEach((key, value) -> {
+        this.control.dataMap.forEach((key, value) -> {
             for(int i=0; i<value; i++){
                 System.out.print("=");
             }
