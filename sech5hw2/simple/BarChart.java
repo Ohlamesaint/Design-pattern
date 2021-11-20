@@ -2,12 +2,6 @@ package sech5hw2.simple;
 
 public class BarChart implements Display {
 
-    Controller control;
-
-    BarChart(Controller control){
-        this.control = control;
-    }
-
     @Override
     public void update(Model model) {
         model.getData().forEach((key, value) -> {

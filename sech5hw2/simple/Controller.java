@@ -31,11 +31,11 @@ public class Controller {
 
     private void attach(String input){
         if(input.equals("Spreadsheet")){
-            displays.add(new SpreadSheet(this));
+            displays.add(new SpreadSheet());
         } else if(input.equals(("BarChart"))){
-            displays.add(new BarChart(this));
+            displays.add(new BarChart());
         } else if(input.equals("PieChart")){
-            displays.add(new PieChart(this));
+            displays.add(new PieChart());
         }
     }
 

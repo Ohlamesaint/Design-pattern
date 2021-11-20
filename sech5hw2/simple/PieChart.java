@@ -5,12 +5,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class PieChart implements Display {
 
-    Controller control;
-
-    PieChart(Controller control){
-        this.control = control;
-    }
-
     @Override
     public void update(Model model) {
         DecimalFormat format = new DecimalFormat(".#");
