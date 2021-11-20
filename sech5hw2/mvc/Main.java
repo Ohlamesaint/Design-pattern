@@ -1,4 +1,4 @@
-package sech5hw2.simple;
+package sech5hw2.mvc;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

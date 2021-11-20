@@ -1,54 +1,50 @@
 package sech5hw2.mvc;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Controller {
 
+    // == fields ==
+    Model model;
+    private List<Display> displays = new ArrayList<>();
 
-    // == Fields ==
-    private List<View> views = new ArrayList<>();
-    private Model model;
-
-
-    // == Constructor ==
-    Controller(Model model){
+    // == constructors ==
+    Controller(Model model) {
         this.model = model;
     }
 
-    // == Public Method ==
-    public void notifyView(){
-        for (View ele: views){
-            ele.update(model);
+    // == public method ==
+    public void dispatch(String input){
+        String[] inputSplit = input.split(" ");
+        if(inputSplit[0].equals("data")){
+            model.addData(inputSplit[1], Integer.parseInt(inputSplit[2]));
+        }
+        else if(inputSplit[0].equals("addChart")){
+            this.attach(inputSplit[1]);
+        }
+        else if(inputSplit[0].equals("change")){
+            this.notifyDisplay(input);
         }
     }
 
-    public void detach(View targetView){
-        this.views.remove(targetView);
+    // == private helper ==
+
+    private void attach(String input){
+        if(input.equals("Spreadsheet")){
+            displays.add(new SpreadSheet());
+        } else if(input.equals(("BarChart"))){
+            displays.add(new BarChart());
+        } else if(input.equals("PieChart")){
+            displays.add(new PieChart());
+        }
     }
 
-    public void attach(View newView){
-        this.views.add(newView);
-    }
-
-    public void logic(){
-        // do business logic
-        // ...
-        // ...
-        // ...
-        // ...
-        // ...
-        // ...
-        notifyView();
-    }
-
-    // == Private Helper ==
-    private void setData1(String newData){
-        model.setData1(newData);
-    }
-    private void setData2(int newData){
-        model.setData2(newData);
-    }private void setData3(float newData){
-        model.setData3(newData);
+    private void notifyDisplay(String input){
+        String[] inputSplit = input.split(" ");
+        model.addData(inputSplit[2], Integer.parseInt(inputSplit[3]));
+        System.out.println(input + ".");
+        this.displays.forEach((display) -> {
+            display.update(model);
+        });
     }
 }

@@ -1,23 +1,19 @@
 package sech5hw2.mvc;
 
-import jdk.jfr.Event;
+import java.text.DecimalFormat;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class PieChart extends View{
-
-    PieChart(Controller controller) {
-        super(controller);
-    }
+public class PieChart implements Display {
 
     @Override
     public void update(Model model) {
-        model.getData1();
-        model.getData2();
-        model.getData3();
-        // PieChart View
-    }
-
-    @Override
-    public void onChange(Event e) {
-        // Something change
+        DecimalFormat format = new DecimalFormat(".#");
+        AtomicInteger tempValueTotal = new AtomicInteger();
+        model.getData().forEach((key, value) -> {
+            tempValueTotal.addAndGet(value);
+        });
+        model.getData().forEach((key, value) -> {
+            System.out.println(key + " " + (format.format((float)value/(float)(tempValueTotal.intValue())*100)) + "%");
+        });
     }
 }
